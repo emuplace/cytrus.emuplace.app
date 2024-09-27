@@ -85,7 +85,7 @@ export default function App() {
                                 {`(${item.sha})`}
                             </Text>
                         </Group>
-                        <Badge color={item.isLatest ? theme.primaryColor : item.isUpcoming ? 'dark' : 'red'}>
+                        <Badge color={item.isLatest ? 'green' : item.isUpcoming ? 'violet' : 'red'}>
                             {item.isLatest ? 'Latest' : item.isUpcoming ? 'Upcoming' : 'Outdated'}
                         </Badge>
                     </Group>
@@ -146,7 +146,6 @@ export default function App() {
                                 <Button color="gray" component="a" href="https://github.com/cytrus-emu/cytrus" radius={'xl'} variant="filled">Source Code</Button>
                             </Group>
                         </Flex>
-                        <Space h={'md'} />
                         <Title order={2}>
                             Changes
                         </Title>
