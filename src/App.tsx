@@ -1,15 +1,9 @@
 import "@mantine/core/styles.css";
 import {
     Accordion, Anchor, Badge, Button, Container,
-    Flex, Group, List, MantineProvider, Menu,
-    Space, Stack, Text, Title, rem
+    Flex, Group, List, MantineProvider,
+    Space, Stack, Text, Title
 } from "@mantine/core";
-import {
-    IconDeviceMobile,
-    IconDeviceTablet,
-    IconDeviceLaptop,
-} from '@tabler/icons-react';
-import { useState } from "react";
 import { theme } from "./theme";
 import classes from './App.module.css';
 
@@ -23,6 +17,8 @@ export default function App() {
             details: [
                 {
                     system: "Android",
+                    download: 'https://github.com/emuplace/cytrus.emuplace.app/releases/download/v1.0.0/app-nightly-release.apk',
+                    last: false,
                     items: [
                         {
                             primaryText: "Rebranded original latest Citra code to Cytrus",
@@ -36,6 +32,8 @@ export default function App() {
                 },
                 {
                     system: "Windows",
+                    download: 'https://github.com/emuplace/cytrus.emuplace.app/releases/download/v1.0.0/cytrus-windows-v1.0.0.7z',
+                    last: true,
                     items: [
                         {
                             primaryText: "Rebranded original latest Citra code to Cytrus",
@@ -48,7 +46,7 @@ export default function App() {
     ];
 
     const items = changes.map((item) => {
-        const listItems = item.details.map((detail, index) => {
+        const listItems = item.details.map((detail) => {
             const detailItems = detail.items.map((item) => (
                 <>
                     <List.Item>
@@ -68,7 +66,11 @@ export default function App() {
                     <List>
                         {detailItems}
                     </List>
-                    <Space h={index === changes.length ? 0 : 'md'} />
+                    <Space h={'md'} />
+                    <Button component="a" disabled={detail.download == '' || detail.download == null} href={detail.download} radius={'md'} size="sm">
+                        Download
+                    </Button>
+                    <Space h={detail.last ? 0 : 'md'} />
                 </>
             );
         });
@@ -97,8 +99,6 @@ export default function App() {
         );
     });
 
-    const [opened, setOpened] = useState(false);
-
     const date = new Date();
 
     return (
@@ -115,7 +115,7 @@ export default function App() {
                         <Text c={'dimmed'} ta={'center'}>
                             Nintendo 3DS emulation, continued
                         </Text>
-                        <Flex align={'center'} justify={'center'}>
+                        {/*<Flex align={'center'} justify={'center'}>
                             <Group ta={'center'}>
                                 <Button component="a" href={`https://github.com/cytrus-emu/cytrus/releases/download/${changes[0].text}/app-nightly-release.apk`} color="green" radius={'xl'} variant="filled">Android</Button>
                                 <Menu opened={opened} onChange={setOpened}>
@@ -145,11 +145,15 @@ export default function App() {
                                 <Button color="blue" component="a" href="https://github.com/cytrus-emu/cytrus/releases/download/v1.0.0/cytrus-windows-v1.0.0.7z" radius={'xl'} variant="filled">Windows</Button>
                                 <Button color="gray" component="a" href="https://github.com/cytrus-emu/cytrus" radius={'xl'} variant="filled">Source Code</Button>
                             </Group>
-                        </Flex>
-                        <Title order={2}>
-                            Changes
-                        </Title>
-                        <Accordion classNames={classes} radius={'md'} variant="contained">
+                        </Flex>*/}
+                        <Space h={'md'} />
+                        <Group align="center" justify="space-between">
+                            <Title order={2}>
+                                Releases
+                            </Title>
+                            <Button component="a" href="https://github.com/cytrus-emu/cytrus" radius={'lg'} variant="default">Source Code</Button>
+                        </Group>
+                        <Accordion classNames={classes} radius={'lg'} variant="contained">
                             {items}
                         </Accordion>
                     </Stack>
