@@ -10,9 +10,32 @@ import classes from './App.module.css';
 export default function App() {
     const changes = [
         {
+            text: 'v1.0.1',
+            sha: 'b6c7a5f',
+            isLatest: true,
+            isUpcoming: false,
+            details: [
+                {
+                    system: "Android",
+                    download: 'https://github.com/emuplace/cytrus.emuplace.app/releases/download/v1.0.1/app-nightly-release.apk',
+                    last: true,
+                    items: [
+                        {
+                            primaryText: "Added opacity setting for the on-screen controller",
+                            secondaryText: null
+                        },
+                        {
+                            primaryText: "Added haptic feedback setting for the on-screen controller",
+                            secondaryText: null
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             text: 'v1.0.0',
             sha: '1e97bb2',
-            isLatest: true,
+            isLatest: false,
             isUpcoming: false,
             details: [
                 {
